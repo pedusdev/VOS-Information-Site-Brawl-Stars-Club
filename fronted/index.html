@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Club VOS | Brawl Stars</title>
-    <!-- Fuentes de Google para un estilo Gaming -->
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* =========================================
-           VARIABLES Y RESETEO BÁSICO
-           ========================================= */
         :root {
             --bg-color: #0f172a;
             --surface-color: #1e293b;
@@ -44,9 +39,6 @@
             overflow-x: hidden;
         }
 
-        /* =========================================
-           NAVEGACIÓN (HEADER)
-           ========================================= */
         header {
             position: fixed;
             top: 0;
@@ -95,9 +87,6 @@
             color: var(--primary-color);
         }
 
-        /* =========================================
-           SECCIÓN HERO (INICIO)
-           ========================================= */
         #inicio {
             height: 100vh;
             display: flex;
@@ -161,9 +150,6 @@
         .btn-discord { background-color: var(--discord); color: white; }
         .btn-whatsapp { background-color: var(--whatsapp); color: white; }
 
-        /* =========================================
-           SECCIÓN ESTADÍSTICAS
-           ========================================= */
         .section-padding {
             padding: 100px 5%;
             max-width: 1200px;
@@ -217,9 +203,6 @@
             text-transform: uppercase;
         }
 
-        /* =========================================
-           EVENTOS (TORNEOS Y SORTEOS)
-           ========================================= */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -259,9 +242,6 @@
             border: 1px dashed var(--text-muted);
         }
 
-        /* =========================================
-           ASISTENTE IA (GROQ)
-           ========================================= */
         .chat-container {
             background-color: var(--surface-color);
             border-radius: 15px;
@@ -428,17 +408,17 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <i class="fa-solid fa-trophy stat-icon"></i>
-                <div class="stat-value" id="val-trophies">1,355,022</div> 
+                <div class="stat-value">1,355,022</div> 
                 <div class="stat-label">Copas Totales</div>
             </div>
             <div class="stat-card">
                 <i class="fa-solid fa-users stat-icon"></i>
-                <div class="stat-value" id="val-members">29/30</div>
+                <div class="stat-value">29/30</div>
                 <div class="stat-label">Miembros</div>
             </div>
             <div class="stat-card">
                 <i class="fa-solid fa-ranking-star stat-icon"></i>
-                <div class="stat-value" id="val-req">40,000</div>
+                <div class="stat-value">40,000</div>
                 <div class="stat-label">Copas Necesarias</div>
             </div>
         </div>
@@ -467,7 +447,7 @@
 
     <section id="ia" class="section-padding">
         <h2 class="section-title">Preguntas Frecuentes (IA)</h2>
-        <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">¿Tienes dudas sobre las reglas del club, los rangos o cómo mejorar? Pregúntale a nuestro bot.</p>
+        <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">¿Tienes dudas sobre el club? Pregúntale a nuestro bot.</p>
         
         <div class="chat-container">
             <div class="chat-header">
@@ -480,7 +460,7 @@
             
             <div class="chat-messages" id="chat-messages">
                 <div class="message bot">
-                    ¡Hola brawler! Soy el asistente oficial del club VOS. Puedes preguntarme sobre las reglas, cómo entrar al club, o consejos para mejorar. ¿En qué te ayudo?
+                    ¡Hola brawler! Soy el asistente del club VOS. Pregúntame sobre cómo entrar, las reglas o cualquier duda. ¿En qué te ayudo?
                 </div>
                 
                 <div class="typing-indicator" id="typing-indicator">
@@ -497,7 +477,6 @@
 
     <footer>
         <p>&copy; 2026 Club VOS - Brawl Stars. Todos los derechos reservados.</p>
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">Este sitio no está afiliado a Supercell.</p>
     </footer>
 
     <script>
@@ -506,9 +485,7 @@
         const typingIndicator = document.getElementById('typing-indicator');
 
         function handleKeyPress(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
+            if (e.key === 'Enter') sendMessage();
         }
 
         function appendMessage(text, sender) {
@@ -529,7 +506,6 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             try {
-                // Detectar si estamos en localhost o en producción
                 const backendURL = window.location.hostname === 'localhost' 
                     ? 'http://localhost:3000/ask-ia'
                     : 'https://vos-bs.onrender.com/ask-ia';
@@ -545,16 +521,14 @@
                 
                 if (data.respuesta) {
                     appendMessage(data.respuesta, 'bot');
-                } else if (data.error) {
-                    appendMessage(`Error: ${data.error}`, 'bot');
                 } else {
-                    appendMessage("Error en los servidores del club...", 'bot');
+                    appendMessage(data.error || 'Error del servidor', 'bot');
                 }
 
             } catch (error) {
                 console.error("Error:", error);
                 typingIndicator.style.display = 'none';
-                appendMessage("Ups... Ha ocurrido un error. Intenta de nuevo más tarde.", 'bot');
+                appendMessage("Error de conexión. Intenta más tarde.", 'bot');
             }
         }
     </script>
