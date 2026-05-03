@@ -1,26 +1,27 @@
-// 1. IMPORTACIONES (Traer las herramientas)
+// backend/server.js
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
-const path = require('path');
+require('dotenv').config();
 
-// 2. CONFIGURACIÓN (Aquí es donde se define "app")
-const app = express(); // <--- ¡ESTA LÍNEA TIENE QUE IR ANTES QUE TODO LO DEMÁS!
+const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 3. RUTAS (Lo que hace el servidor)
+const PORT = process.env.PORT || 3000;
 
-// Ruta para mostrar tu web (index.html)
-app.get('/', (req, res) => {
-    // Asegúrate de que el index.html esté en la misma carpeta que este server.js
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// Ruta para la IA
 app.post('/ask-ia', async (req, res) => {
     const { pregunta } = req.body;
-    const API_KEY = process.env.API_GROQ; // Usa el nombre exacto que pusiste en Render
+    const API_KEY = process.env.API_GROQ;
+
+    if (!pregunta) {
+        return res.status(400).json({ error: 'Pregunta vacía' });
+    }
+
+    if (!API_KEY) {
+        console.error('❌ API_GROQ no configurada');
+        return res.status(500).json({ error: 'Servidor no configurado' });
+    }
 
     try {
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -32,19 +33,36 @@ app.post('/ask-ia', async (req, res) => {
             body: JSON.stringify({
                 model: "llama3-8b-8192",
                 messages: [
-                    { role: "system", content: "Eres el bot de soporte de un club de Brawl Stars." },
+                    { 
+                        role: "system", 
+                        content: "Eres el bot del club VOS de Brawl Stars. El club tiene 1,355,022 copas, 29/30 miembros, requiere 40k copas. Se requiere actividad y Discord/WhatsApp. Responde amigable y conciso."
+                    },
                     { role: "user", content: pregunta }
-                ]
+                ],
+                temperature: 0.7,
+                max_tokens: 250
             })
         });
 
+        if (!response.ok) {
+            const error = await response.text();
+            console.error('Groq error:', error);
+            return res.status(500).json({ error: 'Error con la IA' });
+        }
+
         const data = await response.json();
         res.json({ respuesta: data.choices[0].message.content });
-    } catch (err) {
-        res.status(500).json({ error: "Error en la IA" });
+
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: 'Error del servidor' });
     }
 });
 
-// 4. ENCENDER EL SERVIDOR
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor funcionando en el puerto ${PORT}`));
+app.get('/', (req, res) => {
+    res.json({ status: 'VOS Bot funcionando ✓' });
+});
+
+app.listen(PORT, () => {
+    console.log(`✅ Servidor en puerto ${PORT}`);
+});
