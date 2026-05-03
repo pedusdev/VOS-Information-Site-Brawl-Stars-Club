@@ -2,9 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const path = require('path');
+
+// Esto le dice al servidor que entregue tu HTML cuando alguien entre a la web
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.post('/ask-ia', async (req, res) => {
     const { pregunta } = req.body;
