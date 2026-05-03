@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Brawl Stars | #82YJPRJ8U</title>
+    <title>Club VOS | Brawl Stars</title>
     <!-- Fuentes de Google para un estilo Gaming -->
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Iconos de FontAwesome -->
@@ -16,9 +16,9 @@
         :root {
             --bg-color: #0f172a;
             --surface-color: #1e293b;
-            --primary-color: #facc15; /* Amarillo Brawl Stars */
+            --primary-color: #facc15;
             --primary-glow: rgba(250, 204, 21, 0.4);
-            --secondary-color: #3b82f6; /* Azul trofeo */
+            --secondary-color: #3b82f6;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --danger: #ef4444;
@@ -162,7 +162,7 @@
         .btn-whatsapp { background-color: var(--whatsapp); color: white; }
 
         /* =========================================
-           SECCIÓN ESTADÍSTICAS (SIMULADO EN TIEMPO REAL)
+           SECCIÓN ESTADÍSTICAS
            ========================================= */
         .section-padding {
             padding: 100px 5%;
@@ -218,7 +218,7 @@
         }
 
         /* =========================================
-           TORNEOS Y SORTEOS
+           EVENTOS (TORNEOS Y SORTEOS)
            ========================================= */
         .grid-2 {
             display: grid;
@@ -279,13 +279,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-        }
-
-        .chat-header img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary-color);
         }
 
         .chat-header-info h4 {
@@ -361,9 +354,6 @@
             background-color: #eab308;
         }
 
-        /* =========================================
-           FOOTER Y ANIMACIONES
-           ========================================= */
         footer {
             background-color: #0b1120;
             padding: 2rem;
@@ -377,7 +367,6 @@
             100% { transform: translateY(0px); }
         }
 
-        /* Loading Dots para la IA */
         .typing-indicator {
             display: none;
             align-self: flex-start;
@@ -386,6 +375,7 @@
             border-radius: 15px;
             border-bottom-left-radius: 2px;
         }
+
         .typing-indicator span {
             display: inline-block;
             width: 8px;
@@ -395,6 +385,7 @@
             margin: 0 2px;
             animation: bounce 1.4s infinite ease-in-out both;
         }
+
         .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
         .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
         
@@ -406,10 +397,9 @@
 </head>
 <body>
 
-    <!-- NAVEGACIÓN -->
     <header>
         <nav>
-            <a href="#" class="logo">Club BS</a>
+            <a href="#" class="logo">Club VOS</a>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#estadisticas">Estadísticas</a></li>
@@ -419,13 +409,11 @@
         </nav>
     </header>
 
-    <!-- INICIO -->
     <section id="inicio">
-        <h1 class="hero-title">NOMBRE DE TU CLUB</h1>
+        <h1 class="hero-title">CLUB VOS</h1>
         <p class="hero-subtitle">Únete a la mejor comunidad de Brawl Stars. Competimos, mejoramos juntos y dominamos la arena. Tag: #82YJPRJ8U</p>
         
         <div class="social-buttons">
-            <!-- REEMPLAZA AQUÍ TUS ENLACES REALES -->
             <a href="TU_ENLACE_DE_DISCORD" target="_blank" class="btn btn-discord">
                 <i class="fa-brands fa-discord"></i> Nuestro Discord
             </a>
@@ -435,50 +423,40 @@
         </div>
     </section>
 
-    <!-- ESTADÍSTICAS -->
     <section id="estadisticas" class="section-padding">
         <h2 class="section-title">Estadísticas del Club</h2>
         <div class="stats-grid">
             <div class="stat-card">
                 <i class="fa-solid fa-trophy stat-icon"></i>
-                <!-- El ID se usa para actualizar con JS -->
-                <div class="stat-value" id="val-trophies">Cargando...</div> 
+                <div class="stat-value" id="val-trophies">1,355,022</div> 
                 <div class="stat-label">Copas Totales</div>
             </div>
             <div class="stat-card">
                 <i class="fa-solid fa-users stat-icon"></i>
-                <div class="stat-value" id="val-members">--/30</div>
+                <div class="stat-value" id="val-members">29/30</div>
                 <div class="stat-label">Miembros</div>
             </div>
             <div class="stat-card">
                 <i class="fa-solid fa-ranking-star stat-icon"></i>
-                <div class="stat-value" id="val-req">0</div>
+                <div class="stat-value" id="val-req">40,000</div>
                 <div class="stat-label">Copas Necesarias</div>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.8rem;">
-            *Datos actualizados del club #82YJPRJ8U
-        </p>
     </section>
 
-    <!-- EVENTOS (TORNEOS Y SORTEOS) -->
     <section id="eventos" class="section-padding" style="background-color: rgba(0,0,0,0.2);">
         <h2 class="section-title">Eventos Activos</h2>
         <div class="grid-2">
-            <!-- Torneos -->
             <div class="event-box">
                 <h3 style="color: var(--secondary-color);"><i class="fa-solid fa-gamepad"></i> Torneos Internos</h3>
-                <!-- Aquí puedes añadir HTML cuando tengas torneos -->
                 <div class="empty-state">
                     <i class="fa-solid fa-calendar-xmark" style="font-size: 2rem; margin-bottom: 10px;"></i>
                     <p>Actualmente no hay torneos activos. ¡Únete a nuestro Discord para proponer uno!</p>
                 </div>
             </div>
 
-            <!-- Sorteos -->
             <div class="event-box giveaway">
                 <h3 style="color: var(--danger);"><i class="fa-solid fa-gift"></i> Sorteos de Gemas</h3>
-                 <!-- Aquí puedes añadir HTML cuando tengas sorteos -->
                 <div class="empty-state">
                     <i class="fa-solid fa-box-open" style="font-size: 2rem; margin-bottom: 10px;"></i>
                     <p>No hay sorteos en este momento. Mantente atento a nuestro WhatsApp.</p>
@@ -487,7 +465,6 @@
         </div>
     </section>
 
-    <!-- ASISTENTE DE IA (GROQ) -->
     <section id="ia" class="section-padding">
         <h2 class="section-title">Preguntas Frecuentes (IA)</h2>
         <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">¿Tienes dudas sobre las reglas del club, los rangos o cómo mejorar? Pregúntale a nuestro bot.</p>
@@ -496,17 +473,16 @@
             <div class="chat-header">
                 <i class="fa-solid fa-robot" style="font-size: 24px; color: var(--primary-color);"></i>
                 <div class="chat-header-info">
-                    <h4>BrawlBot IA</h4>
+                    <h4>VOS Bot IA</h4>
                     <p>● En línea</p>
                 </div>
             </div>
             
             <div class="chat-messages" id="chat-messages">
                 <div class="message bot">
-                    ¡Hola brawler! Soy el asistente oficial del club. Puedes preguntarme cuáles son las reglas de expulsión, cómo ascender a Veterano, o consejos generales. ¿En qué te ayudo?
+                    ¡Hola brawler! Soy el asistente oficial del club VOS. Puedes preguntarme sobre las reglas, cómo entrar al club, o consejos para mejorar. ¿En qué te ayudo?
                 </div>
                 
-                <!-- Indicador de "Escribiendo..." -->
                 <div class="typing-indicator" id="typing-indicator">
                     <span></span><span></span><span></span>
                 </div>
@@ -519,60 +495,12 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Club de Brawl Stars. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Club VOS - Brawl Stars. Todos los derechos reservados.</p>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">Este sitio no está afiliado a Supercell.</p>
     </footer>
 
-    <!-- =========================================
-         JAVASCRIPT (LÓGICA)
-         ========================================= -->
     <script>
-        /* ---------------------------------------------------
-           1. SIMULADOR DE DATOS DE BRAWL STARS
-           (Explicación CORS: No podemos hacer fetch directo a Brawlify)
-           Aquí pongo datos simulados, pero te dejo la estructura
-           por si consigues una API Key de Brawl Stars oficial o un proxy.
-        --------------------------------------------------- */
-        async function loadClubStats() {
-            try {
-                // MOCK DATA (Datos estáticos para que la web luzca bien)
-                // Para actualizar, cambia estos números manualmente o conecta un Backend.
-                const clubData = {
-                    trophies: 845230,
-                    members: 28,
-                    requiredTrophies: 20000
-                };
-
-                // Formateamos las copas para que se lean bien (ej: 845,230)
-                document.getElementById('val-trophies').textContent = clubData.trophies.toLocaleString('es-ES');
-                document.getElementById('val-members').textContent = clubData.members + '/30';
-                document.getElementById('val-req').textContent = clubData.requiredTrophies.toLocaleString('es-ES');
-
-            } catch (error) {
-                console.error("Error cargando estadísticas:", error);
-                document.getElementById('val-trophies').textContent = "Error";
-            }
-        }
-
-        // Cargar estadísticas al iniciar
-        window.onload = loadClubStats;
-
-        /* ---------------------------------------------------
-           2. INTEGRACIÓN DE IA CON GROQ API
-           ⚠️ ADVERTENCIA DE SEGURIDAD ⚠️
-           No dejes tu API Key real aquí si publicas la web.
-        --------------------------------------------------- */
-        
-        // Contexto que la IA usará para saber quién es. (Puedes editarlo)
-        const systemPrompt = `Eres el bot de soporte de un club de Brawl Stars. 
-        El club se llama (Nombre del Club), su tag es #82YJPRJ8U. 
-        Reglas inventadas que debes saber: Se requiere actividad diaria, se expulsa a los inactivos de 3 días sin avisar. 
-        Hay que jugar siempre mega hucha, sino expulsado.
-        Hay que tener WhatsApp o Discord si, o si.
-        Responde de forma amigable, estilo gamer y concisa.`;
-
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
         const typingIndicator = document.getElementById('typing-indicator');
@@ -587,15 +515,10 @@
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('message', sender);
             msgDiv.textContent = text;
-            
-            // Insertar antes del indicador de escribiendo
             chatMessages.insertBefore(msgDiv, typingIndicator);
-            
-            // Auto-scroll al fondo
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // Función principal para enviar mensajes
         async function sendMessage() {
             const text = chatInput.value.trim();
             if (!text) return;
@@ -606,19 +529,24 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             try {
-                // Llamar al backend en Render
-                const response = await fetch('https://vos-bs.onrender.com/ask-brawlbot', {
+                // Detectar si estamos en localhost o en producción
+                const backendURL = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:3000/ask-ia'
+                    : 'https://vos-bs.onrender.com/ask-ia';
+
+                const response = await fetch(backendURL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ pregunta: text })
                 });
 
                 const data = await response.json();
-                
                 typingIndicator.style.display = 'none';
                 
                 if (data.respuesta) {
                     appendMessage(data.respuesta, 'bot');
+                } else if (data.error) {
+                    appendMessage(`Error: ${data.error}`, 'bot');
                 } else {
                     appendMessage("Error en los servidores del club...", 'bot');
                 }
